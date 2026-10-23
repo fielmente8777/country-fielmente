@@ -1,0 +1,3 @@
+{
+  "/(hub)/regions/[regions]/page": "app/(hub)/regions/[regions]/page.js"
+}

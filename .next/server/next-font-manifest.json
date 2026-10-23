@@ -1,0 +1,11 @@
+{
+  "app": {
+    "[project]/src/app/(hub)/page": [],
+    "[project]/src/app/(hub)/privacy/page": [],
+    "[project]/src/app/(hub)/regions/[regions]/page": [],
+    "[project]/src/app/[country]/page": []
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

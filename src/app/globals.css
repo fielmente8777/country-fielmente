@@ -1,0 +1,156 @@
+/* Brand system copied from fielmente.com (fielmente8777/fielmente-july, src/app/globals.css). */
+@import "@fontsource-variable/plus-jakarta-sans/wght.css";
+/* Manrope only supplies Greek glyphs, which Plus Jakarta Sans does not have. */
+@import "@fontsource-variable/manrope/index.css";
+@import "tailwindcss";
+
+:root {
+  --primary: #1b2231;
+  --primary2: #110d3c;
+  --secondary: #f26633;
+  --light: #6a6a6a;
+  --color4: #0d54eb;
+  --main-border: #e3e5e8;
+}
+
+@theme inline {
+  --color-primary: #1b2231;
+  --color-primary2: #110d3c;
+  --color-secondary: #424e61;
+  --color-tertiary: #ff824f;
+  --color-color4: #0d54eb;
+  --color-light: #6a6a6a;
+  --color-main-border: #e3e5e8;
+  --color-orange-primary: #f26633;
+  --color-btn-dark: #1b1b1b;
+  --color-footer: #0a0a0c;
+  --font-jakarta: "Plus Jakarta Sans Variable", "Manrope Variable", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", "Leelawadee UI", "Thonburi", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+body {
+  font-family: var(--font-jakarta);
+  color: var(--primary);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+a,
+button {
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 2px solid var(--color4);
+  outline-offset: 3px;
+}
+
+/* Container, same breakpoints as fielmente.com */
+.max_width {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+@media (min-width: 768px) {
+  .max_width { max-width: 720px; }
+}
+@media (min-width: 992px) {
+  .max_width { max-width: 960px; }
+}
+@media (min-width: 1200px) {
+  .max_width { max-width: 1140px; }
+}
+@media (min-width: 1400px) {
+  .max_width { max-width: 1320px; padding-inline: 0; }
+}
+.max_screen_width {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+/* Orange highlighted words inside headings */
+.span-color span {
+  color: #ff824f;
+}
+
+/* Nav underline */
+.nav-link .span-border {
+  background-color: var(--primary);
+  width: 0;
+  height: 1px;
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.nav-link:hover .span-border {
+  width: 100%;
+}
+
+/* Hero glass */
+.glassy-card {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  background: #ffffff2e;
+  box-shadow: inset 0 0 8px 1px #ffffff0d, -1px 0 0 1px #fff3, 1px 0 0 1px #fff3;
+}
+
+/* Dark CTA band with the brand swoosh */
+.elevate-brand {
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.elevate-brand::before,
+.elevate-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.elevate-brand::after {
+  z-index: -2;
+  background-color: #050510;
+}
+.elevate-brand::before {
+  z-index: -1;
+  background-image: url(/home/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Logo and keyword marquees */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  * { transition: none !important; }
+}
+
+/* FAQ accordion */
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-plus {
+  transform: rotate(45deg);
+}

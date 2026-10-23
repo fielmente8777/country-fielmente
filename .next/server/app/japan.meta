@@ -1,0 +1,34 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/[country]/layout,_N_T_/[country]/page,_N_T_/japan"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/$d$country/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 96,
+        "slots": {
+          "children": {
+            "hints": 160,
+            "slots": null
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/7bbd728e0503cf5721a41de327b7190974e72a36d1d2f63f95379fb57a99542a/$/japan",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/[country]/page"
+    },
+    "isFallback": false
+  }
+}

@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002F[country]","\u002F[country]\u002Fopengraph-image","\u002Fregions\u002F[regions]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
