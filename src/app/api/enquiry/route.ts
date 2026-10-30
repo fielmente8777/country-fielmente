@@ -28,7 +28,7 @@ export async function POST(req: Request) {
   const message = clean(body.message);
   const sourceUrl = clean(body.sourceUrl) || `https://${req.headers.get("host") || ""}/`;
 
-  if (!name || !/^\S+@\S+\.\S+$/.test(email) || phone.replace(/\D/g, "").length < 6) {
+  if (!name || (!(body.formPurpose === "audit" && !email) && !/^\S+@\S+\.\S+$/.test(email)) || phone.replace(/\D/g, "").length < 6) {
     return NextResponse.json({ error: "Name, a valid email and a phone number are required" }, { status: 422 });
   }
 
