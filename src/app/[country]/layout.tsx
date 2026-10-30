@@ -1,6 +1,8 @@
 import "../globals.css";
 import { notFound } from "next/navigation";
 import { countries, countryBySlug } from "@/data/countries";
+import { WhatsAppFloat } from "@/components/SiteChrome";
+import { whatsappLink } from "@/data/site";
 import Salesiq from "@/components/zohochatbot/Salesiq";
 
 export function generateStaticParams() {
@@ -24,6 +26,7 @@ export default async function CountryLayout({
     <html lang={country.lang}>
       <body>
         {children} 
+        <WhatsAppFloat href={whatsappLink(country.inName)} />
         <Salesiq />
       </body>
     </html>

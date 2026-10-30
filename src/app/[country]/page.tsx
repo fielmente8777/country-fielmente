@@ -5,7 +5,7 @@ import { countries, countryBySlug, type Country } from "@/data/countries";
 import { clientLogos, countryUrl, internationalClients, partners, services, site, stats, steps, whatsappLink } from "@/data/site";
 import EnquiryForm from "@/components/EnquiryForm";
 import ServicesTabs from "@/components/ServicesTabs";
-import { DarkButton, Footer, Header, SectionHeading, SocialLinks, WhatsAppFloat, displayName } from "@/components/SiteChrome";
+import { DarkButton, Footer, Header, SectionHeading, SocialLinks, displayName } from "@/components/SiteChrome";
 import { ArrowUpRight, ConsultIcon, ExecuteIcon, PlusIcon, StrategiseIcon, TickIcon } from "@/components/Icons";
 import { FaWhatsapp } from "react-icons/fa6";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
@@ -385,7 +385,6 @@ export default async function CountryPage({ params }: Params) {
       </main>
 
       <Footer currentSlug={c.slug} />
-      <WhatsAppFloat href={wa} />
     </>
   );
 }

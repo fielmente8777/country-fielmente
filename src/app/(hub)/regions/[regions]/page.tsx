@@ -7,7 +7,7 @@ import { extraLinks, regionBySlug, regionUrl, regions } from "@/data/regions";
 import { linkTo, services, site, stats, whatsappLink } from "@/data/site";
 
 import EnquiryForm from "@/components/EnquiryForm";
-import { Footer, Header, SectionHeading, SocialLinks, WhatsAppFloat, displayName } from "@/components/SiteChrome";
+import { Footer, Header, SectionHeading, SocialLinks, displayName } from "@/components/SiteChrome";
 import CountryGrid from "@/components/CountyGrid";
 
 type Params = { params: Promise<{ region: string }> };
@@ -137,7 +137,6 @@ export default async function RegionPage({ params }: Params) {
         </section>
       </main>
       <Footer region={r.slug} />
-      <WhatsAppFloat href={wa} />
     </>
   );
 }

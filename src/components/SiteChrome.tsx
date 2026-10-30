@@ -223,17 +223,35 @@ export function Footer({ currentSlug, region: regionSlug }: { currentSlug?: stri
   );
 }
 
-/* ---------- Floating WhatsApp button (bottom-left, as on fielmente.com) ---------- */
-export function WhatsAppFloat({ href }: { href: string }) {
+/* Shared floating contact controls, mounted once by each root layout. */
+export function WhatsAppFloat({ href = `https://wa.me/${site.whatsapp}` }: { href?: string }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener"
-      className="fixed bottom-5 left-5 z-40 flex items-center justify-center w-13 h-13 rounded-full bg-[#25D366] text-white text-3xl shadow-xl transition-transform hover:scale-105"
+    <div
+      role="group"
+      aria-label="Contact Fielmente"
+      className="fixed left-4 lg:left-10 z-20 flex flex-col items-start gap-3"
+      style={{ bottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
-      <span className="sr-only">Chat with Fielmente on WhatsApp</span>
-      <FaWhatsapp aria-hidden="true" />
-    </a>
+      <a
+        id="call-button"
+        href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
+        aria-label="Call Fielmente"
+        title="Call Fielmente"
+        className="call-button flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[#110D3C] text-white shadow-2xl transition-colors hover:bg-[#1B2231] focus-visible:ring-2 focus-visible:ring-[#F26633] focus-visible:ring-offset-2"
+      >
+        <MdPhone size={23} aria-hidden="true" />
+      </a>
+      <a
+        id="whatsapp-button"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        title="Chat on WhatsApp"
+        className="whatsapp-button flex h-12 w-12 flex-none items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-colors hover:bg-green-600 focus-visible:ring-2 focus-visible:ring-[#F26633] focus-visible:ring-offset-2"
+      >
+        <FaWhatsapp size={29} aria-hidden="true" />
+      </a>
+    </div>
   );
 }

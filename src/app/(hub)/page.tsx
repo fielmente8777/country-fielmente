@@ -3,7 +3,7 @@ import { countriesInRegion } from "@/data/countries";
 import { extraLinks, regionLink, regions } from "@/data/regions";
 import { linkTo, site } from "@/data/site";
 
-import { Footer, Header, SectionHeading, WhatsAppFloat, displayName } from "@/components/SiteChrome";
+import { Footer, Header, SectionHeading, displayName } from "@/components/SiteChrome";
 import CountryGrid from "@/components/CountyGrid";
 
 export const metadata: Metadata = {
@@ -45,7 +45,6 @@ export default function WorldIndex() {
         </div>
       </main>
       <Footer />
-      <WhatsAppFloat href={`https://wa.me/${site.whatsapp}`} />
     </>
   );
 }
