@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
+import { markLeadSubmitted } from "@/lib/leadPrompt";
 import { ArrowUpRight } from "./Icons";
 
 const DIAL_CODES = [
@@ -10,7 +11,7 @@ const DIAL_CODES = [
 ];
 
 type Props = {
-  variant: "hero" | "card";
+  variant: "hero" | "card" | "popup";
   country: string;
   dialCode: string;
   ctaLabel: string;
@@ -23,6 +24,7 @@ type Status = "idle" | "sending" | "error";
 const THANK_YOU = "https://fielmente.com/thank-you/";
 
 export default function EnquiryForm({ variant, country, dialCode, ctaLabel, ctaLang, whatsappHref }: Props) {
+  const id = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [code, setCode] = useState(dialCode);
 
@@ -37,6 +39,7 @@ export default function EnquiryForm({ variant, country, dialCode, ctaLabel, ctaL
         body: JSON.stringify({ ...data, dialCode: code, country, sourceUrl: window.location.href }),
       });
       if (!res.ok) throw new Error(String(res.status));
+      markLeadSubmitted();
       window.location.href = THANK_YOU;
     } catch {
       setStatus("error");
@@ -73,12 +76,12 @@ export default function EnquiryForm({ variant, country, dialCode, ctaLabel, ctaL
             </label>
             <div className="w-full flex gap-2 items-center xl:px-4 px-2 max-xl:py-2.5 xl:border-r max-xl:border-b border-white/40 text-white">
               <PhoneIcon />
-              <label className="sr-only" htmlFor="hero-code">Country code</label>
-              <select id="hero-code" value={code} onChange={(e) => setCode(e.target.value)} className="bg-transparent outline-none text-sm [&>option]:text-primary">
+              <label className="sr-only" htmlFor={`${id}-hero-code`}>Country code</label>
+              <select id={`${id}-hero-code`} value={code} onChange={(e) => setCode(e.target.value)} className="bg-transparent outline-none text-sm [&>option]:text-primary">
                 {(DIAL_CODES.includes(dialCode) ? DIAL_CODES : [dialCode, ...DIAL_CODES]).map((d) => <option key={d}>{d}</option>)}
               </select>
-              <label className="sr-only" htmlFor="hero-phone">Phone number</label>
-              <input id="hero-phone" name="phone" type="tel" required autoComplete="tel-national" placeholder="Phone Number*" className="w-full min-w-0 bg-transparent outline-none placeholder:text-white/85 text-sm" />
+              <label className="sr-only" htmlFor={`${id}-hero-phone`}>Phone number</label>
+              <input id={`${id}-hero-phone`} name="phone" type="tel" required autoComplete="tel-national" placeholder="Phone Number*" className="w-full min-w-0 bg-transparent outline-none placeholder:text-white/85 text-sm" />
             </div>
             <label className="w-full flex gap-2 items-center xl:px-4 px-2 max-xl:py-2.5 text-white">
               <span className="sr-only">Email</span>
@@ -114,31 +117,33 @@ export default function EnquiryForm({ variant, country, dialCode, ctaLabel, ctaL
       <p className="mt-2 text-white/85">Let&apos;s work on boosting your hotel&apos;s profitability!</p>
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="c-name" className={label}>Your Name*</label>
-          <input id="c-name" name="name" required autoComplete="name" placeholder="Your full name" className={field} />
+          <label htmlFor={`${id}-c-name`} className={label}>Your Name*</label>
+          <input id={`${id}-c-name`} name="name" required autoComplete="name" placeholder="Your full name" className={field} />
         </div>
         <div>
-          <label htmlFor="c-phone" className={label}>Your Phone Number*</label>
+          <label htmlFor={`${id}-c-phone`} className={label}>Your Phone Number*</label>
           <div className="flex gap-2">
-            <label className="sr-only" htmlFor="c-code">Country code</label>
-            <select id="c-code" value={code} onChange={(e) => setCode(e.target.value)} className="w-24 shrink-0 rounded-lg bg-[#1E1E1E] border border-[#2C2C2C] px-2 py-3.5 text-white outline-none focus:border-tertiary">
+            <label className="sr-only" htmlFor={`${id}-c-code`}>Country code</label>
+            <select id={`${id}-c-code`} value={code} onChange={(e) => setCode(e.target.value)} className="w-24 shrink-0 rounded-lg bg-[#1E1E1E] border border-[#2C2C2C] px-2 py-3.5 text-white outline-none focus:border-tertiary">
               {(DIAL_CODES.includes(dialCode) ? DIAL_CODES : [dialCode, ...DIAL_CODES]).map((d) => <option key={d}>{d}</option>)}
             </select>
-            <input id="c-phone" name="phone" type="tel" required autoComplete="tel-national" placeholder="Your phone number" className={`${field} min-w-0`} />
+            <input id={`${id}-c-phone`} name="phone" type="tel" required autoComplete="tel-national" placeholder="Your phone number" className={`${field} min-w-0`} />
           </div>
         </div>
         <div className="sm:col-span-2">
-          <label htmlFor="c-email" className={label}>Your email*</label>
-          <input id="c-email" name="email" type="email" required autoComplete="email" placeholder="Your email ID" className={field} />
+          <label htmlFor={`${id}-c-email`} className={label}>Your email*</label>
+          <input id={`${id}-c-email`} name="email" type="email" required autoComplete="email" placeholder="Your email ID" className={field} />
+        </div>
+        {variant !== "popup" && (<>
+        <div className="sm:col-span-2">
+          <label htmlFor={`${id}-c-property`} className={label}>Hotel, resort or restaurant name</label>
+          <input id={`${id}-c-property`} name="property" autoComplete="organization" placeholder="Property name" className={field} />
         </div>
         <div className="sm:col-span-2">
-          <label htmlFor="c-property" className={label}>Hotel, resort or restaurant name</label>
-          <input id="c-property" name="property" autoComplete="organization" placeholder="Property name" className={field} />
+          <label htmlFor={`${id}-c-message`} className={label}>Message</label>
+          <textarea id={`${id}-c-message`} name="message" rows={4} placeholder="Write something...." className={field} />
         </div>
-        <div className="sm:col-span-2">
-          <label htmlFor="c-message" className={label}>Message</label>
-          <textarea id="c-message" name="message" rows={4} placeholder="Write something...." className={field} />
-        </div>
+        </>)}
       </div>
       {honeypot}
       <button
