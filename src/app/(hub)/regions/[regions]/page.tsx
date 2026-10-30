@@ -10,16 +10,16 @@ import EnquiryForm from "@/components/EnquiryForm";
 import { Footer, Header, SectionHeading, SocialLinks, displayName } from "@/components/SiteChrome";
 import CountryGrid from "@/components/CountyGrid";
 
-type Params = { params: Promise<{ region: string }> };
+type Params = { params: Promise<{ regions: string }> };
 
 export function generateStaticParams() {
-  return regions.map((r) => ({ region: r.slug }));
+  return regions.map((r) => ({ regions: r.slug }));
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { region: slug } = await params;
+  const { regions: slug } = await params;
   const r = regionBySlug(slug);
   if (!r) return {};
   const url = regionUrl(r.slug);
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 // Region hub, served on <region>.fielmente.com (see proxy.ts): lists the region's country pages and takes enquiries.
 export default async function RegionPage({ params }: Params) {
-  const { region: slug } = await params;
+  const { regions: slug } = await params;
   const r = regionBySlug(slug);
   if (!r) notFound();
 
