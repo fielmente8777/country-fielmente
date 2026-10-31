@@ -74,5 +74,7 @@ export const regionLink = (slug: string) =>
 
 // Pages that live outside this project but belong in a region's list.
 export const extraLinks: Partial<Record<RegionSlug, { name: string; href: string; lang: string; eyebrow: string }[]>> = {
+  europe: ["Finland", "Hungary", "Poland"].map(name=>({name,href:`https://fielmente.com/international-hotel-marketing-agency/locations/${name.toLowerCase()}/`,lang:"en",eyebrow:"Hotel and restaurant marketing"})),
+  asia: ["Azerbaijan", "Cambodia", "Kazakhstan"].map(name=>({name,href:`https://fielmente.com/international-hotel-marketing-agency/locations/${name.toLowerCase()}/`,lang:"en",eyebrow:"Hotel and restaurant marketing"})),
   americas: [{ name: "United States", href: `https://usa.${site.rootDomain}/`, lang: "en-US", eyebrow: "Hotel marketing agency" }],
 };

@@ -105,6 +105,8 @@ export const footerColumns = [
       { label: "Blogs", href: main("/blogs/") },
       { label: "Success Stories", href: main("/case-study/") },
       { label: "Our Clients", href: main("/our-clients/") },
+      { label: "International Experience", href: main("/international-hospitality-marketing-experience/") },
+      { label: "Countries & City Services", href: main("/international-hotel-marketing-agency/locations/") },
     ],
   },
   {

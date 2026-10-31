@@ -5,6 +5,7 @@ import { countries, countryBySlug, type Country } from "@/data/countries";
 import { clientLogos, countryUrl, internationalClients, partners, services, site, stats, steps, whatsappLink } from "@/data/site";
 import EnquiryForm from "@/components/EnquiryForm";
 import ServicesTabs from "@/components/ServicesTabs";
+import CountryMarketGuides from "@/components/CountryMarketGuides";
 import { DarkButton, Footer, Header, SectionHeading, SocialLinks, displayName } from "@/components/SiteChrome";
 import { ArrowUpRight, ConsultIcon, ExecuteIcon, PlusIcon, StrategiseIcon, TickIcon } from "@/components/Icons";
 import { FaWhatsapp } from "react-icons/fa6";
@@ -232,6 +233,8 @@ export default async function CountryPage({ params }: Params) {
             </div>
           </div>
         </section>
+
+        <CountryMarketGuides slug={c.slug} />
 
         {/* How it works */}
         <section className="max_screen_width py-12 md:py-18 bg-[#F9FAFB]">
