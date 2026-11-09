@@ -29,6 +29,16 @@ export const countryUrl = (slug: string) => `https://${slug}.${site.rootDomain}/
 export const linkTo = (slug: string) => (process.env.NEXT_PUBLIC_PATH_LINKS === "1" ? `/${slug}` : countryUrl(slug));
 export const main = (path: string) => `${site.mainSite}${path}`;
 
+// Countries that already have their own page on fielmente.com. That page carries the main domain's
+// authority and is the one meant to rank, so the subdomain copy stays live for visitors and ads but is
+// kept out of Google (noindex, follow), out of the sitemap and out of the hreflang set. Without this the
+// two pages compete for the same searches ("hotel marketing agency UK") and Google keeps swapping them.
+export const mainSitePageFor: Record<string, string> = {
+  uk: "/hotel-marketing-agency-uk/",
+  uae: "/hotel-marketing-agency-uae/",
+};
+export const isIndexedCountry = (slug: string) => !(slug in mainSitePageFor);
+
 export const whatsappLink = (inName: string) =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
     `Hello, I run a hospitality business ${inName} and would like to know more about Fielmente Hospitality Marketing Agency`,

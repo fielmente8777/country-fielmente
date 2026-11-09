@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { countries, countryBySlug, type Country } from "@/data/countries";
-import { clientLogos, countryUrl, internationalClients, partners, services, site, stats, steps, whatsappLink } from "@/data/site";
+import { clientLogos, countryUrl, internationalClients, isIndexedCountry, partners, services, site, stats, steps, whatsappLink } from "@/data/site";
 import EnquiryForm from "@/components/EnquiryForm";
 import ServicesTabs from "@/components/ServicesTabs";
 import CountryMarketGuides from "@/components/CountryMarketGuides";
@@ -19,18 +19,21 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!c) return {};
   const url = countryUrl(c.slug);
 
-  const languages: Record<string, string> = Object.fromEntries(countries.map((x) => [x.lang, countryUrl(x.slug)]));
-  languages["en-US"] = `https://usa.${site.rootDomain}/`;
+  // hreflang only lists pages Google may index (UK, UAE and USA rank on fielmente.com's own pages).
+  const indexed = isIndexedCountry(c.slug);
+  const languages: Record<string, string> = Object.fromEntries(
+    countries.filter((x) => isIndexedCountry(x.slug)).map((x) => [x.lang, countryUrl(x.slug)]),
+  );
   languages["x-default"] = `${site.mainSite}/`;
 
   return {
     metadataBase: new URL(url),
     title: c.metaTitle,
     description: c.metaDescription,
-    alternates: { canonical: url, languages },
+    alternates: indexed ? { canonical: url, languages } : { canonical: url },
     openGraph: { type: "website", url, siteName: site.brand, title: c.metaTitle, description: c.metaDescription, locale: c.ogLocale },
     twitter: { card: "summary_large_image", title: c.metaTitle, description: c.metaDescription },
-    robots: { index: true, follow: true },
+    robots: indexed ? { index: true, follow: true } : { index: false, follow: true, googleBot: { index: false, follow: true } },
     icons: {
       icon: [
         { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
