@@ -5,7 +5,6 @@ import { regions } from "@/data/regions";
 import GlobalLeadPopup from "@/components/GlobalLeadPopup";
 
 import { WhatsAppFloat } from "@/components/SiteChrome";
-import Salesiq from "@/components/zohochatbot/Salesiq";
 
 const leadProfiles = Object.fromEntries(regions.map(region => [region.slug, { country: region.name, dialCode: region.dialCode, whatsappHref: whatsappLink(region.inName) }]));
 
@@ -19,7 +18,6 @@ export default function HubLayout({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <WhatsAppFloat />
-        <Salesiq />
         <GlobalLeadPopup regions={leadProfiles} />
       </body>
     </html>

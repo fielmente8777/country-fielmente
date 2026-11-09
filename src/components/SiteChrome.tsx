@@ -223,21 +223,20 @@ export function Footer({ currentSlug, region: regionSlug }: { currentSlug?: stri
   );
 }
 
-/* Shared floating contact controls, mounted once by each root layout. */
+/* Shared floating contact controls, mounted once by each root layout: call at bottom left, WhatsApp at
+   bottom right. Tracking uses the call-button / whatsapp-button ids and classes, so keep them.
+   These landing pages have no SalesIQ chat; it runs only on the main website (fielmente.com). */
 export function WhatsAppFloat({ href = `https://wa.me/${site.whatsapp}` }: { href?: string }) {
+  const bottom = { bottom: "max(1rem, env(safe-area-inset-bottom))" };
   return (
-    <div
-      role="group"
-      aria-label="Contact Fielmente"
-      className="fixed left-4 lg:left-10 z-20 flex flex-col items-start gap-3"
-      style={{ bottom: "max(1rem, env(safe-area-inset-bottom))" }}
-    >
+    <>
       <a
         id="call-button"
         href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
         aria-label="Call Fielmente"
         title="Call Fielmente"
-        className="call-button flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[#110D3C] text-white shadow-2xl transition-colors hover:bg-[#1B2231] focus-visible:ring-2 focus-visible:ring-[#F26633] focus-visible:ring-offset-2"
+        style={bottom}
+        className="call-button fixed left-4 lg:left-10 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-[#110D3C] text-white shadow-2xl transition-colors hover:bg-[#1B2231] focus-visible:ring-2 focus-visible:ring-[#F26633] focus-visible:ring-offset-2"
       >
         <MdPhone size={23} aria-hidden="true" />
       </a>
@@ -248,10 +247,11 @@ export function WhatsAppFloat({ href = `https://wa.me/${site.whatsapp}` }: { hre
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
         title="Chat on WhatsApp"
-        className="whatsapp-button flex h-12 w-12 flex-none items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-colors hover:bg-green-600 focus-visible:ring-2 focus-visible:ring-[#F26633] focus-visible:ring-offset-2"
+        style={bottom}
+        className="whatsapp-button fixed right-4 lg:right-10 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-colors hover:bg-green-600 focus-visible:ring-2 focus-visible:ring-[#F26633] focus-visible:ring-offset-2"
       >
         <FaWhatsapp size={29} aria-hidden="true" />
       </a>
-    </div>
+    </>
   );
 }
