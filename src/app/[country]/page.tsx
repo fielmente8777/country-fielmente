@@ -19,18 +19,17 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!c) return {};
   const url = countryUrl(c.slug);
 
-  const languages: Record<string, string> = Object.fromEntries(countries.map((x) => [x.lang, countryUrl(x.slug)]));
-  languages["en-US"] = `https://usa.${site.rootDomain}/`;
-  languages["x-default"] = `${site.mainSite}/`;
-
   return {
     metadataBase: new URL(url),
     title: c.metaTitle,
     description: c.metaDescription,
-    alternates: { canonical: url, languages },
+    alternates: { canonical: url },
     openGraph: { type: "website", url, siteName: site.brand, title: c.metaTitle, description: c.metaDescription, locale: c.ogLocale },
     twitter: { card: "summary_large_image", title: c.metaTitle, description: c.metaDescription },
-    robots: { index: true, follow: true },
+    // Kept out of Google (SEO review, Nov 2026): one-page market sites that all lead to the same enquiry form
+    // match Google's "doorway" pattern, and they are not translations of fielmente.com, so no hreflang either.
+    // The pages stay live for outreach and ads; fielmente.com's own market pages (UK, USA, UAE, international) rank instead.
+    robots: { index: false, follow: true },
     icons: {
       icon: [
         { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },

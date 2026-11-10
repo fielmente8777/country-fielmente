@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     alternates: { canonical: url },
     openGraph: { type: "website", url, siteName: site.brand, title: r.metaTitle, description: r.description, locale: "en_GB" },
     twitter: { card: "summary", title: r.metaTitle, description: r.description },
-    robots: { index: true, follow: true },
+    robots: { index: false, follow: true }, // see [country]/page.tsx: kept out of Google, live for outreach
     icons: { icon: "/favicon/favicon-32x32.png", apple: "/favicon/apple-touch-icon.png" },
   };
 }
