@@ -233,7 +233,7 @@ export default async function CountryPage({ params }: Params) {
           </div>
         </section>
 
-        <CountryMarketGuides slug={c.slug} />
+        <CountryMarketGuides />
 
         {/* How it works */}
         <section className="max_screen_width py-12 md:py-18 bg-[#F9FAFB]">
