@@ -23,7 +23,9 @@ export default async function CountryLayout({
   if (!country) notFound();
 
   return (
-    <html lang={country.lang}>
+    // The page body is in English; only the headline, eyebrow and form button are in the local language and
+    // carry their own lang attribute. So the document language is English (the local English variant where there is one).
+    <html lang={country.lang.startsWith("en") ? country.lang : "en"}>
       <body>
         {children} 
         <WhatsAppFloat href={whatsappLink(country.inName)} />
