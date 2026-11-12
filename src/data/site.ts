@@ -19,7 +19,7 @@ export const site = {
   socials: {
     linkedin: "https://www.linkedin.com/company/fielmente/",
     facebook: "https://www.facebook.com/Fielmentemarketing/",
-    instagram: "https://www.instagram.com/fielmente_offical/",
+    instagram: "https://www.instagram.com/fielmente_marketing_agency/",
     x: "https://x.com/fieladvisors?lang=en",
   },
 };
