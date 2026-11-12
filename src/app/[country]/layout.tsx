@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { countries, countryBySlug } from "@/data/countries";
 import { WhatsAppFloat } from "@/components/SiteChrome";
 import { whatsappLink } from "@/data/site";
+import Salesiq from "@/components/zohochatbot/Salesiq";
 import GlobalLeadPopup from "@/components/GlobalLeadPopup";
 
 export function generateStaticParams() {
@@ -29,6 +30,7 @@ export default async function CountryLayout({
       <body>
         {children} 
         <WhatsAppFloat href={whatsappLink(country.inName)} />
+        <Salesiq />
         <GlobalLeadPopup profile={{ country: country.name, dialCode: country.dialCode, whatsappHref: whatsappLink(country.inName) }} />
       </body>
     </html>
