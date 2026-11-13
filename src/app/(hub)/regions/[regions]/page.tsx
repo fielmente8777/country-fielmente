@@ -7,6 +7,7 @@ import { extraLinks, regionBySlug, regionUrl, regions } from "@/data/regions";
 import { linkTo, services, site, stats, whatsappLink } from "@/data/site";
 
 import EnquiryForm from "@/components/EnquiryForm";
+import EazotelAppCTA from "@/components/EazotelAppCTA";
 import { Footer, Header, SectionHeading, SocialLinks, displayName } from "@/components/SiteChrome";
 import CountryGrid from "@/components/CountyGrid";
 
@@ -93,6 +94,8 @@ export default async function RegionPage({ params }: Params) {
             </div>
           </div>
         </section>
+
+        <EazotelAppCTA />
 
         <section id="contact" className="max_screen_width relative py-12 md:py-18 after:absolute md:after:inset-4 after:inset-2 md:after:rounded-[24px] after:rounded-xl after:bg-[#F9FAFB] after:-z-10 isolate">
           <div className="max_width grid lg:grid-cols-2 gap-10 items-start">
