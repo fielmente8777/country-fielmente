@@ -17,14 +17,14 @@ export default function EazotelAppCTA() {
             <FiSmartphone size={16} aria-hidden="true" /> Fielmente · Part of Eazotel
           </p>
           <h2 id="eazotel-download-heading" className="max-w-2xl text-3xl font-extrabold leading-tight tracking-tight text-white md:text-4xl">
-            Take your hotel business <span className="text-[#FF9967]">wherever you go.</span>
+            Keep hospitality enquiries <span className="text-[#FF9967]">within reach.</span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-7 text-white/80">
-            Download the Eazotel app to stay connected with guest enquiries and follow-ups while on the move. Fielmente is part of the Eazotel hospitality technology ecosystem.
+            From hotel and resort stay requests to restaurant customer questions, stay close to hospitality enquiries and follow-ups on the go. Fielmente is part of the Eazotel technology ecosystem.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-[#E4E9FC] sm:text-sm">
-            <span className="rounded-full border border-white/20 px-3 py-2">Guest enquiries</span>
-            <span className="rounded-full border border-white/20 px-3 py-2">CRM follow-ups</span>
+            <span className="rounded-full border border-white/20 px-3 py-2">Stay enquiries</span>
+            <span className="rounded-full border border-white/20 px-3 py-2">Dining &amp; event enquiries</span>
             <span className="rounded-full border border-white/20 px-3 py-2">On-the-go access</span>
           </div>
           <a href={PLAY_STORE_LINK} target="_blank" rel="noopener noreferrer"
@@ -46,20 +46,20 @@ export default function EazotelAppCTA() {
               <div className="bg-[#243469] px-5 pb-8 pt-8 text-white">
                 <p className="text-xs font-extrabold tracking-[0.15em] text-[#FFB08A]">EAZOTEL</p>
                 <p className="mt-3 text-xl font-bold">Hospitality CRM</p>
-                <p className="mt-1 text-xs text-white/70">Your guests, your conversations</p>
+                <p className="mt-1 text-xs text-white/70">Hotels · Resorts · Restaurants</p>
               </div>
               <div className="-mt-4 space-y-3 px-4">
                 <div className="rounded-2xl bg-white p-4 shadow-lg shadow-[#1B2452]/10">
                   <div className="flex items-center gap-3">
                     <span className="rounded-lg bg-[#EDF2FF] p-2 text-[#4064DD]"><FiMessageSquare size={20} aria-hidden="true" /></span>
-                    <div><p className="text-sm font-bold">Guest enquiries</p><p className="text-xs text-[#63718C]">Stay in touch</p></div>
+                    <div><p className="text-sm font-bold">Stay enquiries</p><p className="text-xs text-[#63718C]">Stay in touch</p></div>
                   </div>
                   <div className="mt-3 h-2 w-4/5 rounded-full bg-[#EBEDF3]" aria-hidden="true" />
                 </div>
                 <div className="rounded-2xl bg-white p-4 shadow-lg shadow-[#1B2452]/10">
                   <div className="flex items-center gap-3">
                     <span className="rounded-lg bg-[#FFF0E8] p-2 text-[#DB6C3E]"><FiCheckCircle size={20} aria-hidden="true" /></span>
-                    <div><p className="text-sm font-bold">CRM follow-ups</p><p className="text-xs text-[#63718C]">Stay organised</p></div>
+                    <div><p className="text-sm font-bold">Dining &amp; event enquiries</p><p className="text-xs text-[#63718C]">Stay organised</p></div>
                   </div>
                   <div className="mt-3 h-2 w-3/4 rounded-full bg-[#EBEDF3]" aria-hidden="true" />
                 </div>
