@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { countries, countryBySlug, type Country } from "@/data/countries";
 import { clientLogos, countryUrl, internationalClients, partners, services, site, stats, steps, whatsappLink } from "@/data/site";
 import EnquiryForm from "@/components/EnquiryForm";
+import EazotelAppCTA from "@/components/EazotelAppCTA";
 import ServicesTabs from "@/components/ServicesTabs";
 import CountryMarketGuides from "@/components/CountryMarketGuides";
 import { DarkButton, Footer, Header, SectionHeading, SocialLinks, displayName } from "@/components/SiteChrome";
@@ -333,6 +334,8 @@ export default async function CountryPage({ params }: Params) {
             </div>
           </div>
         </section>
+
+        <EazotelAppCTA />
 
         {/* Contact */}
         <section id="contact" className="max_screen_width relative py-12 md:py-18 after:absolute md:after:inset-4 after:inset-2 md:after:rounded-[24px] after:rounded-xl after:bg-[#F9FAFB] after:-z-10 isolate">
