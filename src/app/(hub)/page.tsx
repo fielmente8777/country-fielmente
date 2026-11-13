@@ -5,6 +5,7 @@ import { linkTo, site } from "@/data/site";
 
 import { Footer, Header, SectionHeading, displayName } from "@/components/SiteChrome";
 import CountryGrid from "@/components/CountyGrid";
+import EazotelAppCTA from "@/components/EazotelAppCTA";
 
 export const metadata: Metadata = {
   title: "Hotel & Restaurant Marketing Agency Worldwide | Fielmente",
@@ -43,6 +44,7 @@ export default function WorldIndex() {
             );
           })}
         </div>
+        <EazotelAppCTA />
       </main>
       <Footer />
     </>
